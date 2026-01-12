@@ -1,0 +1,17 @@
+.grid_square{
+    border: 1px solid #E4E2E2; 
+    width: 30px; 
+    height : 30px; 
+    margin :0px;
+    padding:0px;
+}
+
+#container{
+    max-width:520px;
+    border:  3px solid black;
+    margin: 0px;
+    padding: 0px; 
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+}
