@@ -1,30 +1,37 @@
 const okno = document.querySelector("#container");
-let inputNum = pageOpen();
+const resetButton = document.querySelector("#reset");
 
-let size = 16;
+const contSize = 500;
 
-if (inputNum >= 1 && inputNum <= 100) {
-  size = inputNum;
+createGrid(getSize());
+
+resetButton.addEventListener("click", () => {
+  createGrid(getSize());
+});
+
+function getSize() {
+  let input = Number(prompt("Enter square quantity (1-100)"));
+  if (input >= 1 && input <= 100) return input;
+  return 16;
 }
 
-okno.innerHTML = "";
-okno.style.width = "500px";
-let squareSize = 500 / size;
+function createGrid(size) {
+  okno.innerHTML = "";
+  okno.style.width = contSize + "px";
 
-for (let i = 0; i < size * size; i++) {
-  const square = document.createElement("div");
-  square.classList.add("grid_square");
+  let squareSize = contSize / size;
 
-  square.style.width = squareSize + "px";
-  square.style.height = squareSize + "px";
+  for (let i = 0; i < size * size; i++) {
+    const square = document.createElement("div");
+    square.classList.add("grid_square");
 
-  okno.appendChild(square);
+    square.style.width = squareSize + "px";
+    square.style.height = squareSize + "px";
 
-  square.addEventListener("mousemove", () => {
-    square.style.backgroundColor = "black";
-  });
-}
+    square.addEventListener("mousemove", () => {
+      square.style.backgroundColor = "black";
+    });
 
-function pageOpen() {
-  return Number(prompt("Enter square quantity (1-100)"));
+    okno.appendChild(square);
+  }
 }
